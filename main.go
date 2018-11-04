@@ -7,18 +7,25 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello World")
 	rules := []requirements.Rule{
 		{
 			Name:           "minimum age requirement",
 			Variable:       "age",
 			Comparison:     ">",
-			Value:          18,
+			Value:          17,
 			Interests:      []string{"art", "coding", "music", "travel"},
-			Decline_reason: "Too Young",
+			Decline_reason: "Failed Age Requirement",
+			Passed:         true,
+		}, {
+			Name:           "minimum age requirement",
+			Variable:       "age",
+			Comparison:     ">",
+			Value:          21,
+			Interests:      []string{"writing", "bellydance", "yoga", "watching netflix"},
+			Decline_reason: "Failed Age Requirement",
 			Passed:         true,
 		},
 	}
-	requirements.GenerateRule(rules)
-	// fmt.Println(rules[0])
+	decisionResult := requirements.GenerateRule(rules)
+	fmt.Println(decisionResult.Passed)
 }
