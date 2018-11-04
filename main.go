@@ -26,6 +26,10 @@ func main() {
 			Passed:         true,
 		},
 	}
-	decisionResult := requirements.GenerateRule(rules)
-	fmt.Println(decisionResult.Passed)
+	builtScripts := requirements.GenerateRule(rules)
+	state := requirements.DecisionInput{InputVariable: 19}
+	// requirements
+	result := requirements.RunRule(builtScripts, state)
+
+	fmt.Println(result)
 }
